@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+if test -e /tmp/xmslockdir.pid; then
+	pid=$(cat /tmp/xmslockdir.pid)
+	if ps -p "$pid" >/dev/null; then
+		kill -2 "$pid"
+	fi
+	rm -f /tmp/xmslockdir.pid
+else
+	# shellcheck disable=SC2086
+	xmslockdir $1 &
+	echo $! > /tmp/xmslockdir.pid
+fi

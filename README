@@ -1,0 +1,10 @@
+xmslockdir is a mouse direction locker for X.
+For more information about it's usage check `man xmslockdir`.
+
+This program requires libxcb to be installed.
+In order to build this program you need to run `make`.
+
+This program is free software; you can redistribute it
+and/or modify it under the terms of the GNU General Public License
+version 2 as published by the Free Software Foundation.
+See COPYING for more details.

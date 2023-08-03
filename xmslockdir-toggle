@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+if test "$1" != "-x" && test "$1" != "-y"; then
+	echo "xmslockdir-toggle: invalid option" >/dev/stderr
+	exit 1
+fi
+
 if test -e /tmp/xmslockdir.pid; then
 	pid=$(cat /tmp/xmslockdir.pid)
 	if ps -p "$pid" >/dev/null; then

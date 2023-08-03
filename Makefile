@@ -23,7 +23,8 @@ install: all
 
 dist: clean
 	mkdir -p xmslockdir-$(VERSION)
-	cp -R COPYING config.mk Makefile README xmslockdir.1 xmslockdir.c xmslockdir-toggle xmslockdir-$(VERSION)
+	cp -R COPYING config.mk Makefile README xmslockdir.1 \
+		xmslockdir.c xmslockdir-toggle xmslockdir-$(VERSION)
 	tar -cf xmslockdir-$(VERSION).tar xmslockdir-$(VERSION)
 	gzip xmslockdir-$(VERSION).tar
 	rm -rf xmslockdir-$(VERSION)

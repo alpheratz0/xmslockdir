@@ -1,17 +1,18 @@
 /*
 	Copyright (C) 2022 <alpheratz99@protonmail.com>
 
-	This program is free software; you can redistribute it and/or modify it under
-	the terms of the GNU General Public License version 2 as published by the
-	Free Software Foundation.
+	This program is free software; you can redistribute it and/or modify it
+	under the terms of the GNU General Public License version 2 as published by
+	the Free Software Foundation.
 
-	This program is distributed in the hope that it will be useful, but WITHOUT ANY
-	WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-	FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful, but WITHOUT
+	ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+	FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+	more details.
 
-	You should have received a copy of the GNU General Public License along with
-	this program; if not, write to the Free Software Foundation, Inc., 59 Temple
-	Place, Suite 330, Boston, MA 02111-1307 USA
+	You should have received a copy of the GNU General Public License along
+	with this program; if not, write to the Free Software Foundation, Inc., 59
+	Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 */
 
@@ -65,8 +66,10 @@ x_get_pointer_position(xcb_connection_t *conn, xcb_screen_t *screen)
 	cookie = xcb_query_pointer(conn, screen->root);
 	reply = xcb_query_pointer_reply(conn, cookie, &error);
 
-	if (NULL != error)
-		die("xcb_query_pointer failed with error code: %hhu", error->error_code);
+	if (NULL != error) {
+		die("xcb_query_pointer failed with error code: %hhu",
+				error->error_code);
+	}
 
 	pos.x = reply->root_x;
 	pos.y = reply->root_y;
@@ -77,9 +80,14 @@ x_get_pointer_position(xcb_connection_t *conn, xcb_screen_t *screen)
 }
 
 static void
-x_set_pointer_position(xcb_connection_t *conn, xcb_screen_t *screen, xcb_point_t *pos)
+x_set_pointer_position(xcb_connection_t *conn,
+                       xcb_screen_t *screen,
+                       xcb_point_t *pos)
 {
-	xcb_warp_pointer(conn, XCB_NONE, screen->root, 0, 0, 0, 0, pos->x, pos->y);
+	xcb_warp_pointer(
+		conn, XCB_NONE, screen->root,
+		0, 0, 0, 0, pos->x, pos->y
+	);
 	xcb_flush(conn);
 }
 
@@ -139,11 +147,11 @@ main(int argc, char **argv)
 	while (++argv, --argc > 0) {
 		if ((*argv)[0] == '-' && (*argv)[1] != '\0' && (*argv)[2] == '\0') {
 			switch ((*argv)[1]) {
-				case 'h': usage(); break;
-				case 'v': version(); break;
-				case 'x': lock_dir = XMSLOCKDIR_X; break;
-				case 'y': lock_dir = XMSLOCKDIR_Y; break;
-				default: die("invalid option %s", *argv); break;
+			case 'h': usage(); break;
+			case 'v': version(); break;
+			case 'x': lock_dir = XMSLOCKDIR_X; break;
+			case 'y': lock_dir = XMSLOCKDIR_Y; break;
+			default: die("invalid option %s", *argv); break;
 			}
 		} else {
 			die("unexpected argument: %s", *argv);

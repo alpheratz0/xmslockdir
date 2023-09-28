@@ -107,8 +107,8 @@ xmslockdir(int lock_dir)
 	while (1) {
 		usleep(20000);
 		recv_pos = x_get_pointer_position(conn, screen);
-		next_pos.x = lock_dir == XMSLOCKDIR_X ? lock_pos.x : recv_pos.x;
-		next_pos.y = lock_dir == XMSLOCKDIR_Y ? lock_pos.y : recv_pos.y;
+		next_pos.x = lock_dir == XMSLOCKDIR_X ? recv_pos.x : lock_pos.x;
+		next_pos.y = lock_dir == XMSLOCKDIR_Y ? recv_pos.y : lock_pos.y;
 		if (next_pos.x != recv_pos.x || next_pos.y != recv_pos.y)
 			x_set_pointer_position(conn, screen, &next_pos);
 	}

@@ -6,7 +6,7 @@ include config.mk
 all: xmslockdir
 
 xmslockdir: xmslockdir.o
-	$(CC) $(LDFLAGS) -o xmslockdir xmslockdir.o $(LDLIBS)
+	$(CC) $(LDFLAGS) -o xmslockdir xmslockdir.o
 
 clean:
 	rm -f xmslockdir xmslockdir.o xmslockdir-$(VERSION).tar.gz

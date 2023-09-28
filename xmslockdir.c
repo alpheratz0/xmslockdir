@@ -84,10 +84,8 @@ x_set_pointer_position(xcb_connection_t *conn,
                        xcb_screen_t *screen,
                        xcb_point_t *pos)
 {
-	xcb_warp_pointer(
-		conn, XCB_NONE, screen->root,
-		0, 0, 0, 0, pos->x, pos->y
-	);
+	xcb_warp_pointer(conn, XCB_NONE, screen->root,
+			0, 0, 0, 0, pos->x, pos->y);
 	xcb_flush(conn);
 }
 
